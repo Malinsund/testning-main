@@ -16,14 +16,14 @@ describe("App", () => {
 
     // todo-elementet har lagts till
     expect(screen.getByText("Dricker vatten:")).toBeInTheDocument();
-    expect(screen.getByText("0")).toBeInTheDocument(); // Initialt count ska vara 0
+    expect(screen.getByText("0")).toBeInTheDocument();
 
     // Klicka på "Count"-knappen två gånger
-    fireEvent.click(screen.getByText("Öka")); // Första klicket
-    expect(screen.getByText("1")).toBeInTheDocument(); // Räknaren ska vara 1 efter första klicket
+    fireEvent.click(screen.getByText("Öka"));
+    expect(screen.getByText("1")).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText("Öka")); // Andra klicket
-    expect(screen.getByText("2")).toBeInTheDocument(); // Räknaren ska vara 2 efter andra klicket
+    fireEvent.click(screen.getByText("Öka"));
+    expect(screen.getByText("2")).toBeInTheDocument();
 
     //  Klicka på "Avsluta räknandet"-knappen
     fireEvent.click(screen.getByText("Avsluta räknandet"));
