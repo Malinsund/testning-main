@@ -5,44 +5,60 @@ import App from "./App";
 describe("App", () => {
   it("should be possible to add a todo and increment the count", () => {
     render(<App />);
+    console.log(screen.debug());
+
+    expect(screen.getByText("🥃 Shotta 🥃")).toBeInTheDocument();
 
     //  Lägg till en todo med texten "Dricker vatten"
-    fireEvent.input(screen.getByRole("textbox"), {
+    fireEvent.input(screen.getByTestId("only-input"), {
       target: { value: "Dricker vatten" },
     });
 
     // Klicka på "Save"-knappen
-    fireEvent.click(screen.getByText("Save"));
+    fireEvent.click(screen.getByTestId("save-button"));
 
-    // todo-elementet har lagts till
-    expect(screen.getByText("Dricker vatten:")).toBeInTheDocument();
-    expect(screen.getByText("0")).toBeInTheDocument();
+    // Kontrollera att todo har lagts till och visas i h3
+    expect(
+      screen.getByRole("heading", { level: 3, name: /Dricker vatten: 0/ })
+    ).toBeInTheDocument();
 
-    // Klicka på "Count"-knappen två gånger
-    fireEvent.click(screen.getByText("Öka"));
-    expect(screen.getByText("1")).toBeInTheDocument();
+    // Öka räknaren
+    fireEvent.click(screen.getByTestId("count-button"));
+    expect(
+      screen.getByRole("heading", { level: 3, name: /Dricker vatten: 1/ })
+    ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText("Öka"));
-    expect(screen.getByText("2")).toBeInTheDocument();
+    // Avsluta räknandet
+    fireEvent.click(screen.getByTestId("end-button"));
 
-    //  Klicka på "Avsluta räknandet"-knappen
-    fireEvent.click(screen.getByText("Avsluta räknandet"));
+    // Kontrollera att räknandet avslutades och att todo flyttats till en span
+    expect(screen.getByText(/Dricker vatten: 1/)).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { level: 3 })).not.toBeInTheDocument();
+
+    expect(
+      screen.getByText("Såhär många shots varje gång...")
+    ).toBeInTheDocument();
+
+    expect(screen.getByTestId("count-button")).toBeInTheDocument();
+    expect(screen.getByTestId("end-button")).toBeInTheDocument();
   });
-
-  /* it("should be possible to add a todo", () => {
-    render(<App />);
-
-    fireEvent.input(screen.getByRole("textbox"), {
-      target: { value: "Antal steg" },
+  it("should correctly increment count when CountButton is clicked", () => {
+    // Lägg till en todo med texten "Dricker vatten"
+    fireEvent.input(screen.getByTestId("only-input"), {
+      target: { value: "Dricker vatten" },
     });
 
     // Klicka på "Save"-knappen
-    fireEvent.click(screen.getByText("Save"));
+    fireEvent.click(screen.getByTestId("save-button"));
 
-    // Verifiera att todo-elementet har lagts till
-    expect(screen.getByText("Dricker vatten:")).toBeInTheDocument();
-    expect(screen.getByText("0")).toBeInTheDocument();
-    expect(screen.getByText("Antal steg:")).toBeInTheDocument();
-    expect(screen.getByText("0")).toBeInTheDocument(); // Initialt count ska vara 0
-  }); */
+    // Klicka på "CountButton" flera gånger
+    const countButton = screen.getByTestId("count-button");
+    fireEvent.click(countButton);
+    fireEvent.click(countButton);
+
+    // Kontrollera att räknaren har ökat till 2
+    expect(
+      screen.getByRole("heading", { level: 3, name: /Dricker vatten: 2/ })
+    ).toBeInTheDocument();
+  });
 });

@@ -6,7 +6,11 @@ interface Props {
 
 const EndButton: FC<Props> = ({ onEnd }) => {
   return (
-    <button className="bg-red-500 text-white px-4 py-2 rounded" onClick={onEnd}>
+    <button
+      data-testid="end-button"
+      className="border px-4 py-2 rounded"
+      onClick={onEnd}
+    >
       Avsluta räknandet
     </button>
   );

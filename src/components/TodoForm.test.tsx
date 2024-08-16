@@ -6,7 +6,7 @@ describe("TodoForm", () => {
   it("should render an input with a submit button", () => {
     render(<TodoForm onSubmit={vi.fn()} />);
 
-    // Kontrollera att input-fältet och knappen renderas korrekt
+    // Kontrollera att input-fältet och knappen visas
     expect(screen.getByRole("textbox")).toBeVisible();
     expect(screen.getByRole("button")).toHaveTextContent("Save");
   });

@@ -5,12 +5,15 @@ interface Props {
 
 const CountButton: FC<Props> = ({ onCount }) => {
   return (
-    <button
-      className="bg-blue-500 text-white px-4 py-2 rounded"
-      onClick={onCount}
-    >
-      Öka
-    </button>
+    <div className="flex justify-center">
+      <button
+        className="border rounded-md py-2 px-6"
+        data-testid="count-button"
+        onClick={onCount}
+      >
+        Öka
+      </button>
+    </div>
   );
 };
 

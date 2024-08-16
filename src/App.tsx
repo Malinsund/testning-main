@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+
 import CountButton from "./components/CountButton";
 import EndButton from "./components/EndButton";
 import TodoForm from "./components/TodoForm";
@@ -19,46 +19,52 @@ function App() {
   };
 
   const handleEnd = () => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.text === currentTodo ? { ...todo, count: todo.count + 1 } : todo
-      )
-    );
     setCurrentTodo(null);
   };
 
   return (
     <>
-      <h1 className="text-red-500">Shotta</h1>
+      <h1 className=" flex justify-center text-6xl m-4 ">🥃 Shotta 🥃</h1>
 
       <TodoForm onSubmit={handleSubmit} />
 
-      <h2>Såhär många shots...</h2>
+      <h2 className="flex justify-center text-xl">
+        Såhär många shots varje gång...
+      </h2>
 
-      <div>
+      <div className="flex flex-col">
         {todos.map((todo) => (
           <div key={todo.text} className="mb-2">
-            <span className="font-bold">{todo.text}: </span>
-            <span>{todo.count}</span>
+            {todo.text === currentTodo ? (
+              <h3 className="flex font-bold text-lg  justify-center">
+                {todo.text}: {todo.count}
+              </h3>
+            ) : (
+              <span className="flex font-thin text-gray-400  justify-center">
+                {todo.text}: {todo.count}
+              </span>
+            )}
           </div>
         ))}
       </div>
 
-      <CountButton
-        onCount={() => {
-          if (currentTodo) {
-            setTodos((prevTodos) =>
-              prevTodos.map((todo) =>
-                todo.text === currentTodo
-                  ? { ...todo, count: todo.count + 1 }
-                  : todo
-              )
-            );
-          }
-        }}
-      />
+      <div className="flex justify-center">
+        <CountButton
+          onCount={() => {
+            if (currentTodo) {
+              setTodos((prevTodos) =>
+                prevTodos.map((todo) =>
+                  todo.text === currentTodo
+                    ? { ...todo, count: todo.count + 1 }
+                    : todo
+                )
+              );
+            }
+          }}
+        />
 
-      <EndButton onEnd={handleEnd} />
+        <EndButton onEnd={handleEnd} />
+      </div>
     </>
   );
 }
