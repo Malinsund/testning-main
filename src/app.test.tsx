@@ -43,20 +43,24 @@ describe("App", () => {
     expect(screen.getByTestId("end-button")).toBeInTheDocument();
   });
   it("should correctly increment count when CountButton is clicked", () => {
+    render(<App />);
+
     // Lägg till en todo med texten "Dricker vatten"
     fireEvent.input(screen.getByTestId("only-input"), {
       target: { value: "Dricker vatten" },
     });
 
     // Klicka på "Save"-knappen
-    fireEvent.click(screen.getByTestId("save-button"));
+    fireEvent.click(screen.getByText("Save"));
+
+    const countButton = screen.getByTestId("count-button");
+    expect(countButton).toBeInTheDocument();
 
     // Klicka på "CountButton" flera gånger
-    const countButton = screen.getByTestId("count-button");
     fireEvent.click(countButton);
     fireEvent.click(countButton);
-
     // Kontrollera att räknaren har ökat till 2
+
     expect(
       screen.getByRole("heading", { level: 3, name: /Dricker vatten: 2/ })
     ).toBeInTheDocument();

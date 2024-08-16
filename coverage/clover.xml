@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723718446493" clover="3.2.0">
-  <project timestamp="1723718446493" name="All files">
+<coverage generated="1723813214997" clover="3.2.0">
+  <project timestamp="1723813214997" name="All files">
     <metrics statements="19" coveredstatements="19" conditionals="5" coveredconditionals="3" methods="12" coveredmethods="12" elements="36" coveredelements="34" complexity="0" loc="19" ncloc="19" packages="2" files="4" classes="4"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="5" coveredconditionals="3" methods="7" coveredmethods="7"/>
       <file name="App.tsx" path="/Users/malle_skola/Desktop/testning-main/src/App.tsx">
         <metrics statements="11" coveredstatements="11" conditionals="5" coveredconditionals="3" methods="7" coveredmethods="7"/>
         <line num="13" count="8" type="stmt"/>
-        <line num="14" count="7" type="stmt"/>
-        <line num="16" count="7" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
         <line num="17" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
-        <line num="21" count="7" type="stmt"/>
+        <line num="21" count="8" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="54" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="55" count="3" type="stmt"/>
         <line num="56" count="3" type="stmt"/>
-        <line num="57" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="3" type="cond" truecount="1" falsecount="1"/>
       </file>
     </package>
     <package name="src.components">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
       <file name="CountButton.tsx" path="/Users/malle_skola/Desktop/testning-main/src/components/CountButton.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="6" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
       </file>
       <file name="EndButton.tsx" path="/Users/malle_skola/Desktop/testning-main/src/components/EndButton.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
       </file>
       <file name="TodoForm.tsx" path="/Users/malle_skola/Desktop/testning-main/src/components/TodoForm.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>

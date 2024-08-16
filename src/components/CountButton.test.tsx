@@ -3,25 +3,14 @@ import { describe, expect, it, vi } from "vitest";
 import CountButton from "./CountButton";
 
 describe("CountButton", () => {
-  it("should call onCount when clicked", () => {
-    // Arrange
-    const onCount = vi.fn(); // Mocka funktionen
-    render(<CountButton onCount={onCount} />);
+  it("should render and respond to clicks", () => {
+    const mockOnCount = vi.fn();
+    render(<CountButton onCount={mockOnCount} />);
 
-    // Act
-    fireEvent.click(screen.getByText("Öka"));
+    const countButton = screen.getByTestId("count-button");
+    expect(countButton).toBeInTheDocument();
 
-    // Assert
-    expect(onCount).toHaveBeenCalled();
+    fireEvent.click(countButton);
+    expect(mockOnCount).toHaveBeenCalled();
   });
 });
-
-/* it("Should increment count when clicked", () => {
-    render(<CountButton onCount={() => {}} />);
-    fireEvent.click(screen.getByRole("button"));
-    expect(screen.getByRole("button")).toHaveTextContent(/1/);
-
-    fireEvent.click(screen.getByRole("button"));
-    fireEvent.click(screen.getByRole("button"));
-    expect(screen.getByRole("button")).toHaveTextContent(/3/);
-  }); */
