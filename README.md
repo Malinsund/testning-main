@@ -14,13 +14,13 @@ För att komma igång med projektet, följ dessa steg:
 
    ```
 
-2. ```bash npm install
-
+2. ```bash
+   npm install
    ```
 
 ## Ramverk och hjälpmedel
 
-I detta project har jag använte mig av
+I detta project har jag använt mig av
 
 - React: Ett populärt JavaScript-bibliotek för att bygga användargränssnitt.
 - TypeScript: Ett typat superset av JavaScript som lägger till statiska typer.
